@@ -2,17 +2,19 @@ class TasksController < ApplicationController
 
 def new
   @task = Task.new
+  @task.completed=false
   @todoodle = Todoodle.find(params[:todoodle_id])
 end
 
 def create
   @todoodle = Todoodle.find(params[:todoodle_id])
   @task = @todoodle.tasks.new(new_task_params)
+  @task.completed=false
   if @task.save!
     redirect_to root_url
   else
     flash[:notice]="Try again. Something didn't work right. :("
-    redirect_to root_url
+    render :new
   end
 
 end
@@ -20,6 +22,17 @@ end
 def edit
   @task = Task.find(params[:id])
 end
+
+def update
+  @task = Task.find(params[:id])
+  @task.update_attributes(completed:true)
+  @task.save!
+  flash[:notice]="That's done! Great Job!"
+
+  redirect_to root_url
+end
+
+
 
 private
 

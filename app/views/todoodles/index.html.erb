@@ -1,30 +1,39 @@
 <div class = "container">
   <div class = "page-goodies">
       <% if current_user%>
-        <%@todoodles.each do |t|%>
-        <div class="col-xs-3">
-          <h2><%=t.title%></h2>
-          <h5><%=link_to todoodle_path(t), :method=>:delete do%>
-            <i class="glyphicon glyphicon-ok-circle"></i>
-            <%end%>
-            <%=t.description%>
-            <br>
-            <%if t.tasks%>
-              <%t.tasks.each do |task|%>
-                <%=task.item%>
-                <br>
-              <%end%>
-            <%end%>
 
-          </h5>
-          <%=link_to "add more tasks", new_todoodle_task_path(t), class: "btn btn-primary btn-sm"%>
-          <br>
-          <%=link_to todoodle_path(t), :method=>:delete do%>
-            Can this ToDoodle! <i class="glyphicon glyphicon-trash"></i>
-            <%end%>
-
-        </div>
+        <%if current_user.todoodles.empty?%>
+          <h3>Add some ToDoodles!</h3>
+        <%else%>
+          <%current_user.todoodles.each do |t|%>
+            <div class="col-xs-3">
+              <h2><%=t.title%></h2>
+              <h5>
+                <%if t.tasks%>
+                  <%t.tasks.each do |task|%>
+                    <% if task.completed==false%>
+                      <%=link_to todoodle_task_path(task.todoodle_id,task.id), :method=>:put do%>
+                        <i class="glyphicon glyphicon-ok-circle"></i>
+                      <%end%>
+                    <%else%>
+                      <i class="glyphicon glyphicon-ok"></i>
+                    <%end%>
+                    <%=task.item%>
+                    <br>
+                  <%end%>
+                  <br>
+                <%end%>
+              </h5>
+              <%=link_to "add tasks", new_todoodle_task_path(t), class: "btn btn-primary btn-sm"%>
+              <br>
+              <%=link_to todoodle_path(t), :method=>:delete do%>
+                <i class="glyphicon glyphicon-trash"></i>
+                <%end%>
+            </div>
           <%end%>
+          <%end%>
+
+
       <%else%>
         <div class = "container">
           <h2>Welcome to ToDoodles!</h2>

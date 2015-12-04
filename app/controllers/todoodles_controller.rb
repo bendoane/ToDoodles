@@ -7,12 +7,13 @@ end
 
 def create
   @todoodle = Todoodle.new(new_todoodle_params)
+  @todoodle.user = current_user
   if @todoodle.save!
-    flash[:notice]="Whew! Another list!"
+    flash[:notice]="A New ToDoodle!"
     redirect_to root_url
   else
     flash[:notice]="Try again. Something didn't work right. :("
-    redirect_to root_url
+    render :new
   end
 end
 
@@ -23,6 +24,7 @@ end
 
 def index
   @todoodles = Todoodle.all
+  @user = current_user
 end
 
 def destroy
@@ -35,7 +37,7 @@ end
 private
 
 def new_todoodle_params
-  params.require(:todoodle).permit(:title, :description)
+  params.require(:todoodle).permit(:title)
 end
 
 
