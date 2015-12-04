@@ -10,7 +10,8 @@ def create
   @todoodle = Todoodle.find(params[:todoodle_id])
   @task = @todoodle.tasks.new(new_task_params)
   @task.completed=false
-  if @task.save!
+  if @task.save
+    flash[:notice]="...Another Task ToDoodle!"
     redirect_to root_url
   else
     flash[:notice]="Try again. Something didn't work right. :("

@@ -8,7 +8,7 @@ end
 def create
   @todoodle = Todoodle.new(new_todoodle_params)
   @todoodle.user = current_user
-  if @todoodle.save!
+  if @todoodle.save
     flash[:notice]="A New ToDoodle!"
     redirect_to root_url
   else
