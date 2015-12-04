@@ -9,7 +9,7 @@ def new
 end
 
 def create
-  @user=User.new(newguy_params)
+  @user = User.new(newguy_params)
   if @user.save
     flash[:notice]="Great Job! Let's make some lists!"
     redirect_to root_url
