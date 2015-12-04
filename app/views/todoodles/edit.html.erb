@@ -1,0 +1,12 @@
+<div class="container">
+
+  <h2><%=@todoodle.title%></h2>
+  <%=bootstrap_form_for(@todoodle) do |d|%>
+  <div class="field">
+    <div id ="desc">
+      <%= d.text_field :description, placeholder: "Quick, short reminder", :maxlength => "20" %>
+    </div>
+  </div>
+  <%end%>
+
+</div>

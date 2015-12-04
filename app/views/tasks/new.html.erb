@@ -1,0 +1,12 @@
+<div class="container">
+
+  <%=bootstrap_form_for([@todoodle, @task]) do |t|%>
+    <div class="field">
+    <%=t.text_field :item%>
+  </div>
+  <div class="actions">
+    <%= t.submit "Add Task" %>
+  </div>
+  <%end%>
+
+</div>

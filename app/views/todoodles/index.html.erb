@@ -1,0 +1,37 @@
+<div class = "container">
+  <div class = "page-goodies">
+      <% if current_user%>
+        <%@todoodles.each do |t|%>
+        <div class="col-xs-3">
+          <h2><%=t.title%></h2>
+          <h5><%=link_to todoodle_path(t), :method=>:delete do%>
+            <i class="glyphicon glyphicon-ok-circle"></i>
+            <%end%>
+            <%=t.description%>
+            <br>
+            <%if t.tasks%>
+              <%t.tasks.each do |task|%>
+                <%=task.item%>
+                <br>
+              <%end%>
+            <%end%>
+
+          </h5>
+          <%=link_to "add more tasks", new_todoodle_task_path(t), class: "btn btn-primary btn-sm"%>
+          <br>
+          <%=link_to todoodle_path(t), :method=>:delete do%>
+            Can this ToDoodle! <i class="glyphicon glyphicon-trash"></i>
+            <%end%>
+
+        </div>
+          <%end%>
+      <%else%>
+        <div class = "container">
+          <h2>Welcome to ToDoodles!</h2>
+          <p>ToDoodles is a fun way for you to enter your "to do" lists, and keep track of what you've accomplished!</p>
+          <p>Sign up to start Todoodling today!</p>
+        </div>
+      <%end%>
+
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class = "container">
+
+  <%=form_for @user_session do |s|%>
+  <% if @user_session.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @user_session.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+      <%= s.label :name %><br>
+      <%= s.text_field :name, placeholder:"Your name" %>
+    </div>
+    <div class="field">
+      <%= s.label :password %><br>
+      <%= s.password_field :password, placeholder: "Password" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= s.submit "Login" %>
+    </div>
+  <% end %>
+</div>

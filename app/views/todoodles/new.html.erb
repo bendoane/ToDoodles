@@ -1,0 +1,28 @@
+<div class = "container">
+  <h1>Add ToDoodle</h1>
+
+  <%=bootstrap_form_for(@todoodle) do |d|%>
+    <% if @todoodle.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @todoodle.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= d.text_field :title, placeholder: "What's yer list called?", :maxlength => "12" %>
+    </div>
+    <div class="field">
+      <div id ="desc">
+        <%= d.text_field :description, placeholder: "What's the task at hand?", :maxlength => "20" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= d.submit "Add" %>
+    </div>
+  <% end %>
+</div>
