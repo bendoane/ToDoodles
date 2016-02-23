@@ -19,8 +19,8 @@
 
         <%else%>
           <h1 class="page-title"><%=link_to "ToDoodles!", root_url%></h1>
-          <%=link_to "Sign Up!", new_user_path, class: "btn btn-danger btn-sm"%>
-          <%=link_to "Log in!", new_user_session_path, class: "btn btn-primary btn-sm"%>
+          <%=link_to "Sign Up!", new_user_path, class: "btn btn-danger btn-lg"%>
+          <%=link_to "Log in!", new_user_session_path, class: "btn btn-primary btn-lg"%>
         <%end%>
       </div>
     </div>
@@ -36,7 +36,9 @@
 
   </body>
   <br>
-  <footer class="footer">
-    <p>A silly To-Do list tracking application by <a href="http://uptobuildingcode.blogspot.com/">Ben Doane</a> for <a href="http://theironyard.com/locations/indianapolis/">The Iron Yard</a>.</p>
+  <footer>
+      <nav class="navbar navbar-default navbar-fixed-bottom" id="footer">
+        <p>A silly To-Do list tracking application by <a href="http://uptobuildingcode.blogspot.com/">Ben Doane</a> for <a href="http://theironyard.com/locations/indianapolis/">The Iron Yard</a>.</p>
+      </nav>
   </footer>
 </html>
