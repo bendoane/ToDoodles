@@ -3,7 +3,8 @@
       <% if current_user%>
 
         <%if current_user.todoodles.empty?%>
-          <h3>Add some ToDoodles!</h3>
+          <h3>You currently have no ToDoodles!</h3>
+          <h5>You can add one with the button above</h5>
         <%else%>
           <%current_user.todoodles.each do |t|%>
             <div class="col-xs-3">
