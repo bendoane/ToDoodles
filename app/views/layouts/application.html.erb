@@ -7,32 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
   <body>
-    <div class="container">
-      <div class = "jumbotron">
 
+      <div class = "jumbotron">
         <% if current_user%>
         <h3>Welcome, <%=@current_user.name.upcase%>!</h3>
         <h1 class="page-title">
-          <%=link_to "ToDoodles!", root_url%></h1>
+          <%=link_to image_tag("Todoodles-icon.png", :style=>"width:100px;")+"oDoodles!", root_url%></h1>
           <%=link_to "Add ToDoodle", new_todoodle_path, class: "btn btn-danger btn-lg"%>
           <%=link_to "Log Out", user_session_path(@current_user), :method => :delete, class: "btn btn-primary btn-lg"%>
 
         <%else%>
-          <h1 class="page-title"><%=link_to "ToDoodles!", root_url%></h1>
+          <h1 class="page-title">
+          <%=link_to image_tag("Todoodles-icon.png", :style=>"width:100px;")+"oDoodles!", root_url%></h1>
           <%=link_to "Sign Up!", new_user_path, class: "btn btn-danger btn-lg"%>
           <%=link_to "Log in!", new_user_session_path, class: "btn btn-primary btn-lg"%>
         <%end%>
       </div>
-    </div>
+
     <% if flash[:notice] %>
       <div class = "container">
         <h2><%= flash[:notice] %></h2>
       </div>
     <%end%>
 
-
-
+    <div class="container">
     <%= yield %>
+    </div>
 
   </body>
   <br>
