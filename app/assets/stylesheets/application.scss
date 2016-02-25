@@ -14,13 +14,27 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ // GENERAL
 * {
   text-align: center;
 }
-
+.btn{
+  border: 1.5px solid #404040;
+  box-shadow: -3px 3px 3px #888888;
+  text-shadow:
+     -1px -1px 0 black,
+      1px -1px 0 black,
+      -1px 1px 0 black,
+       1px 1px 0 black;
+}
+.btn:hover{
+  border: 1.5px solid #404040;
+}
+// HEADING
 .jumbotron{
   text-align: center;
   align-items: center;
+  padding-bottom: 10px;
 }
 .jumbotron h3{
   margin:0px;
@@ -30,12 +44,14 @@
 }
 .page-title a{
   margin-top: 10px;
+  color: black;
 }
 .page-title:hover a{
   text-decoration: none;
   opacity: .6;
+  color: black;
 }
-
+// BODY
 .page-goodies{
   text-align: left;
 }
@@ -46,7 +62,7 @@
 body{
   min-height: 650px;
 }
-
+// FOOTER
 #footer{
   min-height: 20px;
 }
