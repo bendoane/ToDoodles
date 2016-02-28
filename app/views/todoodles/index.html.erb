@@ -6,31 +6,36 @@
           <h3>You currently have no ToDoodles!</h3>
           <h5>You can add one with the button above</h5>
         <%else%>
-          <%current_user.todoodles.each do |t|%>
-            <div class="col-xs-3">
-              <h2><%=t.title%></h2>
-              <h5>
-                <%if t.tasks%>
-                  <%t.tasks.each do |task|%>
-                    <% if task.completed==false%>
-                      <%=link_to todoodle_task_path(task.todoodle_id,task.id), :method=>:put do%>
-                        <i class="glyphicon glyphicon-ok-circle"></i>
+          <%current_user.todoodles.each_slice(4) do |four|%>
+            <div class="row">
+              <% four.each do |t|%>
+                <div class="col-xs-3">
+                  <div class="item-tab">
+                    <h2><%=t.title%></h2>
+                    <h5>
+                      <%if t.tasks%>
+                        <%t.tasks.each do |task|%>
+                          <% if task.completed==false%>
+                            <%=link_to todoodle_task_path(task.todoodle_id,task.id), :method=>:put do%>
+                              <i class="glyphicon glyphicon-ok-circle"></i>
+                            <%end%>
+                          <%else%>
+                            <i class="glyphicon glyphicon-ok"></i>
+                          <%end%>
+                          <%=task.item%>
+                          <br>
+                        <%end%>
+                        <br>
                       <%end%>
-                    <%else%>
-                      <i class="glyphicon glyphicon-ok"></i>
-                    <%end%>
-                    <%=task.item%>
-                    <br>
-                  <%end%>
-                  <br>
+                    </h5>
+                    <%=link_to "add tasks", new_todoodle_task_path(t), class: "btn btn-primary btn-sm"%>
+                    <%=link_to todoodle_path(t), :class => "btn btn-danger delete", :method=>:delete do%>
+                      <i class="glyphicon glyphicon-trash"></i>
+                      <%end%>
+                  </div>
+                </div>
                 <%end%>
-              </h5>
-              <%=link_to "add tasks", new_todoodle_task_path(t), class: "btn btn-primary btn-sm"%>
-              <br>
-              <%=link_to todoodle_path(t), :method=>:delete do%>
-                <i class="glyphicon glyphicon-trash"></i>
-                <%end%>
-            </div>
+              </div>
           <%end%>
           <%end%>
 
